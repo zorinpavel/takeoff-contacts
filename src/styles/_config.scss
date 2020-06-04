@@ -1,0 +1,81 @@
+$page-size: 1200;
+
+$color-base: rgb(66, 66, 66);
+$color-base-light: lighten($color-base, 30%);
+$color-base-background: rgb(244, 244, 244);
+
+$color-link-base: rgb(77, 119, 204) !default;
+$color-link-hover: rgb(254, 199, 34) !default;
+
+$color-text-error: rgb(169, 68, 66);
+$color-text-error-alter: rgb(200, 50, 50);
+$color-text-attention: rgb(138, 109, 59);
+$color-text-attention-alter: rgb(255, 224, 0);
+$color-text-message: rgb(60, 118, 61);
+$color-text-info: rgb(49, 112, 143);
+$color-highlighted: rgb(253, 233, 153);
+
+$border-radius: 4px;
+
+$color-button: $color-base;
+$color-button-background: rgb(238, 238, 238);
+$color-button-background-red: rgba(201, 48, 44, 0.9);
+$color-button-red: rgb(255, 255, 255);
+$color-button-background-blue: rgba(51, 122, 183, 0.9);
+$color-button-blue: rgb(255, 255, 255);
+$color-button-background-green: rgba(25, 135, 69, 0.9);
+$color-button-green: rgb(255, 255, 255);
+$color-button-background-yellow: rgba(255, 232, 105, 0.8);
+$color-button-yellow: rgb(111, 99, 0);
+
+$color-input: rgb(153, 153, 153);
+$color-input-focus: $color-base;
+$color-input-border: rgb(225, 225, 225);
+$color-input-background: rgb(255, 255, 255);
+$color-input-required-border: rgb(255, 0, 0);
+$color-input-error: rgb(255, 0, 0);
+$color-input-error-border: rgb(255, 0, 0);
+
+$color-section-header-background: rgb(114, 114, 114) !default;
+$color-section-header: rgb(255, 255, 255) !default;
+$color-section-skew: rgb(254, 199, 34) !default;
+
+$color-user-login: rgb(221, 44, 0) !default;
+
+$color-social-vk: rgb(76, 117, 163);
+$color-social-facebook: rgb(59, 89, 153);
+$color-social-twitter: rgb(85, 172, 238);
+$color-social-google: rgb(221, 75, 57);
+$color-social-ok: rgb(244, 115, 28);
+$color-social-yandex: rgb(255, 214, 51);
+$color-social-youtube: rgb(255, 0, 0);
+$color-social-instagram: rgb(228, 64, 95);
+
+$color-dialog-background: rgb(245, 245, 245);
+
+$color-green: rgb(25, 135, 69);
+$color-green-light: rgb(124, 165, 65);
+$color-red: rgb(220, 50, 50);
+
+$phone-width: 415px; // Apple iPhone 6+, 6s+, 7+, 8+ // 375px;
+$ipad-width: 800px; // Samsung Galaxy Tab
+$desktop-width: 1024px;
+
+
+@mixin media($media) {
+    @if $media == phone {
+        @media only screen and (max-width: $phone-width) {
+            @content;
+        }
+    }
+    @else if $media == ipad {
+        @media only screen and (max-width: $ipad-width) {
+            @content;
+        }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width: $desktop-width) {
+            @content;
+        }
+    }
+}

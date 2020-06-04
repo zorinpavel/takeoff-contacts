@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+HTML, BODY {
+    height:100%;
+}
+BODY {
+    font-family: "RobotoLight", sans-serif;
+    color: $color-base;
+    font-size: 14px;
+    height: 100%;
+    width: 100%;
+    line-height: 1.6;
+    letter-spacing: normal;
+}
+
+:focus { outline: 0; }
+
+IMG {border:0;}
+
+A {
+    color: inherit;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+        color: $color-link-base;
+    }
+    &.color {
+        color: $color-link-base;
+        &:hover {
+            color: $color-base;
+        }
+    }
+    & > SVG {
+        fill: currentcolor;
+    }
+}
+
+P {
+    margin: 1rem 0;
+}
+
+TABLE {
+    border-collapse: collapse;
+}
+TD {
+    vertical-align: top;
+}
+
+H1, H2, H3, H4, STRONG, B {
+    color: inherit;
+    font-family: "Roboto", sans-serif;
+}
+LABEL {cursor:pointer;}
+
+.dno {display: none;}
+
+UL[role="navigation"] {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    LI {
+
+    }
+}
+
+DIV[role="dialog"] {
+    position: absolute;
+    background-color: $color-dialog-background;
+    border-radius: 2px;
+    border: 1px solid darken($color-dialog-background, 10%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 50;
+    & > .fa-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        line-height: 2rem;
+        width: 2rem;
+        text-align: center;
+    }
+}
+
+.content-container {
+    margin: 0 auto;
+    padding: 0 2rem;
+    max-width: 95%;
+}

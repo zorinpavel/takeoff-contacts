@@ -1,0 +1,374 @@
+%input {
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    color: $color-input;
+    margin: 0.5rem 0;
+    width: 100%;
+    border: 1px solid $color-input-border;
+    background-color: $color-input-background;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    line-height: inherit;
+    padding: 0.5rem 1rem;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none !important;
+    &:focus {
+        color: $color-input-focus;
+        border: 1px solid $color-input-focus;
+    }
+}
+
+%label {
+    position: absolute;
+    left: 1rem;
+    font-size: 70%;
+    top: -0.2rem;
+    color: $color-input;
+    background-color: $color-input-background;
+    cursor: default;
+    padding: 0 0.5rem;
+}
+
+INPUT {
+    @extend %input;
+}
+TEXTAREA {
+    @extend %input;
+    resize: vertical;
+}
+SELECT {
+    @extend %input;
+}
+INPUT[type="radio"] {
+    width: auto;
+    margin: 0.5rem;
+    appearance: initial;
+}
+INPUT[type="checkbox"] {
+    width: auto;
+    margin: 0.5rem;
+    appearance: initial;
+}
+INPUT[type="number"] {
+    appearance: initial;
+}
+@for $i from 1 through 10 {
+    INPUT[size="#{$i}"] {
+        width: 1rem * $i + 2rem;
+        text-align: center;
+    }
+}
+
+
+.text-field {
+    position: relative;
+    INPUT, TEXTAREA {
+        & + LABEL {
+            @extend %label;
+        }
+        &:required {
+            border-left-color: $color-input-required-border;
+        }
+        &:focus {
+            & + LABEL {
+                color: $color-input-focus;
+            }
+            &:invalid {
+                @extend INPUT.error;
+            }
+        }
+        &:valid {
+            color: $color-input-focus;
+        }
+        &[readonly], &:disabled {
+            background-color: darken($color-input-background, 3%);
+            color: lighten($color-input, 8%);
+        }
+        &.error {
+            color: $color-input-error;
+            border-color: $color-input-error-border;
+        }
+    }
+    &[icon] {
+        &:after {
+            color: $color-input-border;
+            font-family: "bobsoccer";
+            position: absolute;
+            top: 0.8rem;
+            right: 0.5rem;
+            width: 1.5rem;
+            text-align: center;
+            line-height: inherit;
+            font-size: 120%;
+        }
+        &:hover:after {
+            color: $color-input-focus;
+        }
+    }
+    &[icon="password"]:after {
+        @extend .text-field[icon]:after;
+        content: "\f023";
+    }
+    &[icon="login"]:after {
+        @extend .text-field[icon]:after;
+        content: "\f2be";
+    }
+    &[icon="email"]:after {
+        @extend .text-field[icon]:after;
+        content: '\f0e0';
+    }
+    &[icon="date"]:after,
+    &[icon="calendar"]:after {
+        @extend .text-field[icon]:after;
+        content: "\f073";
+    }
+    &[icon="time"]:after {
+        @extend .text-field[icon]:after;
+        content: "\e818";
+    }
+    &[icon="tags"]:after {
+        @extend .text-field[icon]:after;
+        content: "\f02c";
+    }
+    &[icon="phone"]:after {
+        @extend .text-field[icon]:after;
+        content: "\e816";
+    }
+    &[icon="minus"],
+    &[icon="delete"] {
+        &:after {
+            @extend .text-field[icon]:after;
+            content: "\e806";
+        }
+        &:hover:after {
+            color: $color-text-error;
+        }
+    }
+    &[icon="add"],
+    &[icon="plus"] {
+        &:after {
+            @extend .text-field[icon]:after;
+            content: "\f068";
+        }
+        &:hover:after {
+            color: $color-text-message;
+        }
+    }
+    &[icon="photo"]:after {
+        @extend .text-field[icon]:after;
+        content: "\e815";
+    }
+    &.inline {
+        display: inline-block;
+    }
+    & > A {
+        @extend .text-field[icon]:after;
+        height: 1.5rem;
+        cursor: pointer;
+        z-index: 2;
+    }
+    @include media(phone) {
+        &.c1of4 {
+            width: 49.3%; // why???
+        }
+    }
+}
+
+.radio-field {
+    @extend .text-field;
+    @extend %input;
+    INPUT[type="radio"] + LABEL,
+    INPUT[type="checkbox"] + LABEL {
+        cursor: pointer;
+        position: initial;
+        font-size: 90%;
+    }
+    LABEL:last-of-type {
+        @extend %label;
+        top: -1rem;
+    }
+    &:focus {
+        LABEL {
+            color: $color-input-focus;
+        }
+    }
+    &.c1of2 {
+        width: 49.3%;
+    }
+    &.c1of3 {
+        width: 33%;
+    }
+}
+
+.select-field {
+    @extend .text-field;
+    SELECT {
+        //color: transparent;
+        box-shadow: none;
+        background: transparent none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        OPTION {
+            color: $color-input-focus;
+        }
+        & + LABEL {
+            @extend %label;
+        }
+        &:required {
+            @extend INPUT:required;
+        }
+        &:focus {
+            outline: none;
+            & + LABEL {
+                color: $color-input-focus;
+            }
+            &:invalid {
+                @extend INPUT.error;
+            }
+        }
+        &:valid {
+            //@extend INPUT:valid;
+        }
+        &[readonly], &:disabled {
+            @extend INPUT[readonly];
+        }
+        &.error {
+            @extend INPUT.error;
+        }
+    }
+    &:after {
+        top: 50%;
+        right: 1rem;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border: 6px solid transparent;
+        border-top-color: $color-input;
+        margin-top: -2px;
+        z-index: 70;
+    }
+}
+
+.editor-field {
+    @extend .text-field;
+    padding-top: 0.5rem;
+    TEXTAREA {
+        margin-top: 0;
+        border-top: 0 none;
+        color: $color-input-focus;
+        min-height: 10rem;
+        line-height: 1.2;
+        & + LABEL {
+            display: none;
+        }
+    }
+}
+
+
+
+@mixin button-type($color-button, $color-button-background) {
+    background-color: $color-button-background;
+    color: $color-button;
+    &:hover {
+        background-color: darken($color-button-background, 5%);
+    }
+    &:active {
+        background-color: darken($color-button-background, 10%);
+    }
+}
+
+@mixin box-shadow($rise: false) {
+    @if $rise {
+        box-shadow: 0 4px 5px  0 rgba(0, 0, 0, 0.14),
+                    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+                    0 2px 4px  -1px rgba(0, 0, 0, 0.2);
+    } @else {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                    0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+%button {
+    @extend %input;
+
+    border-radius: 2px;
+    font-family: "RobotoRegular", sans-serif;
+    cursor: pointer;
+    border: 0 none;
+    width: auto;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    font-size: 90%;
+    line-height: 1;
+    padding: 1rem 1.5rem 0.7rem;
+    margin: 0 0.5rem;
+    &:hover {
+        background-color: darken($color-button-background, 5%);
+    }
+    &:active {
+        background-color: darken($color-button-background, 10%);
+    }
+    &:focus {
+        border: 0 none;
+    }
+    &[readonly], &[disabled], &:disabled, &.disabled {
+        background-color: darken($color-input-background, 3%) !important;
+        color: lighten($color-input, 8%) !important;
+        cursor: not-allowed;
+    }
+    @media (min-width: $phone-width) {
+        & + INPUT[type="submit"],
+        & + INPUT[type="button"],
+        & + A[role="button"],
+        & + BUTTON {
+            margin-left: 1rem;
+        }
+    }
+    @include media(phone) {
+        margin: 1rem auto;
+        width: 95%;
+        display: block;
+    }
+}
+
+INPUT[type="button"], A[role="button"], BUTTON {
+    @extend %button;
+    @include button-type($color-button, $color-button-background);
+}
+INPUT[type="button"][role="delete"], BUTTON[role="delete"], A[role="button delete"],
+INPUT[type="button"].button-delete, BUTTON.button-delete, A[role="button"].button-delete {
+    @extend  %button;
+    @include button-type($color-button-red, $color-button-background-red);
+}
+INPUT[type="submit"], BUTTON[role="save"], A[role="button save"], A[role="button add"],
+INPUT[type="button"].button-green, BUTTON.button-green, A[role="button"].button-green {
+    @extend  %button;
+    @include button-type($color-button-green, $color-button-background-green);
+}
+INPUT[type="button"].button-blue, BUTTON.button-blue, A[role="button"].button-blue {
+    @extend  %button;
+    @include button-type($color-button-blue, $color-button-background-blue);
+}
+INPUT[type="button"].button-yellow, BUTTON.button-yellow, A[role="button"].button-yellow {
+    @extend  %button;
+    @include button-type($color-button-yellow, $color-button-background-yellow);
+}
+INPUT[type="button"].button-flat, BUTTON.button-flat, A[role="button"].button-flat {
+    @extend  %button;
+    @include button-type(inherit, rgb(255, 255, 255));
+}
+
+BUTTON.google {
+    @include button-type($color-button-red, $color-social-google);
+}
