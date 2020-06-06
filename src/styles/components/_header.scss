@@ -1,18 +1,51 @@
 .header {
-    background-color: $color-base-background;
-}
+    background-color: $color-background-dark;
+    color: $color-base-light;
 
-.header__content {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-}
+    .header__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
 
-.header__title {
-    color: $color-base;
+        .header__title {
+            color: $color-base-light;
 
-    H1 {
-        margin: 0;
+            H1 {
+                margin: 0;
+            }
+        }
+
+        .header-menu {
+            display: flex;
+            align-items: center;
+
+            & > * {
+                margin-left: 2rem;
+            }
+
+            A {
+                color: $color-base-light;
+
+                &:hover {
+                    color: lighten($color-base-light, 10%);
+                }
+            }
+
+            .header-menu__login {
+                display: flex;
+                align-items: center;
+
+                .login__name {
+                    margin-right: 0.5rem;
+                }
+
+                .login__avatar {
+                    border-radius: 50%;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ export default (state = [], action) => {
     case 'SET_CONTACTS':
         return action.contacts;
     case 'REMOVE_CONTACT':
-        return state.filter(({ id }) => id !== action.id);
+        return state.filter(id => id !== action.id);
     case 'EDIT_CONTACT':
         return state.map(contact => {
             if (contact.id === action.id) {

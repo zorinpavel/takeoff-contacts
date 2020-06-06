@@ -1,21 +1,22 @@
 .box-layout {
-  align-items: center;
-  background-size: cover;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-}
+    align-items: center;
+    background-size: cover;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
 
-.box-layout__box {
-  background-color: $color-dialog-background;
-  border-radius: $border-radius;
-  padding: 2rem;
-  text-align: center;
-  width: 25rem;
-}
+    .box-layout__box {
+        background-color: $color-dialog-background;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        padding: 2rem;
+        text-align: center;
+        width: 25rem;
 
-.box-layout__title {
-  margin-bottom: 1rem;
-  line-height: 1;
+        .box-layout__title {
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+    }
 }

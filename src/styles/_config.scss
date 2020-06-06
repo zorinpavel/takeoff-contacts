@@ -1,11 +1,10 @@
-$page-size: 1200;
+$color-base: rgb(46, 50, 60);
+$color-base-background: rgb(245, 246, 250);
+$color-base-light: rgb(161, 172, 187);
+$color-background-dark: rgb(46, 52, 60);
 
-$color-base: rgb(66, 66, 66);
-$color-base-light: lighten($color-base, 30%);
-$color-base-background: rgb(244, 244, 244);
-
-$color-link-base: rgb(77, 119, 204) !default;
-$color-link-hover: rgb(254, 199, 34) !default;
+$color-link-base: $color-base;
+$color-link-hover: lighten($color-base, 10%);
 
 $color-text-error: rgb(169, 68, 66);
 $color-text-error-alter: rgb(200, 50, 50);
@@ -15,6 +14,7 @@ $color-text-message: rgb(60, 118, 61);
 $color-text-info: rgb(49, 112, 143);
 $color-highlighted: rgb(253, 233, 153);
 
+$border-color: rgb(228, 233, 241);
 $border-radius: 4px;
 
 $color-button: $color-base;
@@ -51,7 +51,7 @@ $color-social-yandex: rgb(255, 214, 51);
 $color-social-youtube: rgb(255, 0, 0);
 $color-social-instagram: rgb(228, 64, 95);
 
-$color-dialog-background: rgb(245, 245, 245);
+$color-dialog-background: rgb(255, 255, 255);
 
 $color-green: rgb(25, 135, 69);
 $color-green-light: rgb(124, 165, 65);

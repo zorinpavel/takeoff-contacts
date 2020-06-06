@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     history.push('/dashboard');
             })
             .catch(error => {
-                console.error('fetchToken error', error);
+                console.error('error', error);
             });
     } else {
         store.dispatch(logout());

@@ -7,12 +7,13 @@ export const setContacts = (contacts) => ({
 });
 
 export const fetchContacts = (params = {}) => (dispatch, getState) => {
-    const uid = getState().auth.uid;
+    const authToken = getState().auth.authToken;
 
     return fetch({
         url: settings.API_URL + settings.CONTACTS_PATH,
         method: 'GET',
         params,
+        authToken
     })
         .then(response => response.json())
         .then(contacts => {

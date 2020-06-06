@@ -1,0 +1,13 @@
+.footer {
+    background-color: $color-background-dark;
+    color: $color-base-light;
+    font-size: 80%;
+    flex-shrink: 0;
+
+    .footer__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+    }
+}

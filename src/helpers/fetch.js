@@ -6,12 +6,16 @@ const
             )).join('&');
         }
 
-        return fetch(options.url, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        };
 
+        if (options.authToken)
+            headers['Authorization'] = 'Bearer ' + options.authToken;
+
+        return fetch(options.url, {
+            headers,
             method: options.method || 'GET',
             body: (options.method === 'GET') ? null : JSON.stringify(options.params),
         })

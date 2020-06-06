@@ -3,10 +3,11 @@ import jwt from 'jsonwebtoken';
 import fetch from '../helpers/fetch';
 import settings from '../settings';
 
-export const login = (uid, authToken) => ({
+export const login = (user, authToken) => ({
     type: 'LOGIN',
-    uid,
-    authToken
+    uid: user._id,
+    authToken: authToken,
+    user: user
 });
 
 export const fetchToken = (user = {}) => {
@@ -26,7 +27,7 @@ export const fetchToken = (user = {}) => {
             .then(payload => {
                 const { user, authToken } = payload;
 
-                dispatch(login(user._id, authToken));
+                dispatch(login(user, authToken));
 
                 return Promise.resolve();
             })
