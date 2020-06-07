@@ -20,12 +20,12 @@ export const ContactList = (props) => {
         <div className="list-body">
             {
                 props.contacts.length === 0 ? (
-                    <div className="list-item list-item--message">
+                    <div className="list-item__message">
                         <span>No contacts</span>
                     </div>
                 ) : (
                     props.contacts.map(contact => {
-                        return <ContactListItem key={contact.id} { ...contact } />;
+                        return <ContactListItem key={contact._id} { ...contact } />;
                     })
                 )
             }

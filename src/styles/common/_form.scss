@@ -312,8 +312,8 @@ INPUT[type="number"] {
     font-size: 90%;
     letter-spacing: 1.5px;
     line-height: 1;
-    padding: 1rem 1.5rem 0.7rem;
-    margin: 0 0.5rem;
+    padding: 1em 1.5em 0.7em;
+    margin: 0 0.5em;
     &:hover {
         background-color: darken($color-button-background, 5%);
     }

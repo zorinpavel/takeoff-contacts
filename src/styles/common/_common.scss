@@ -2,15 +2,17 @@
     margin: 0;
     box-sizing: border-box;
 }
-HTML, BODY {
+HTML {
     height: 100%;
+    font-size: 62.5%;
 }
 BODY {
-    font-family: "RobotoLight", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     color: $color-base;
-    font-size: 14px;
     height: 100%;
     width: 100%;
+    font-size: 1.6rem;
     line-height: 1.6;
     letter-spacing: normal;
     background-color: $color-base-background;
@@ -49,9 +51,9 @@ TD {
     vertical-align: top;
 }
 
-H1, H2, H3, H4, STRONG, B {
+H1, H2, H3, H4, H5, H6, STRONG, B {
     color: inherit;
-    font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 LABEL {cursor:pointer;}
 
