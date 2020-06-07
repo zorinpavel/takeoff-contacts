@@ -7,7 +7,6 @@ import { fetchContacts } from '../actions/contacts';
 
 export const ContactList = (props) => {
     useEffect(() => {
-        console.log('useEffect');
         props.fetchContacts()
             .then(contacts => {
                 console.log('contacts', contacts);

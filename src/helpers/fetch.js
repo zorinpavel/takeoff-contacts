@@ -1,3 +1,6 @@
+import fetch from 'cross-fetch';
+
+
 const
     fetchApi = options => {
         if (options.method === 'GET' && Object.keys(options.params).length !== 0) {

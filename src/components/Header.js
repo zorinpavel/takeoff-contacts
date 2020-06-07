@@ -10,7 +10,7 @@ export const Header = ({ user, startLogout }) => {
             <div className="content-container">
                 <div className="header__content">
                     <Link className="header__title" to="/dashboard">
-                        <h1>Takeoff App</h1>
+                        <h1>Contacts app</h1>
                     </Link>
                     <div className="header-menu">
                         <Link to="/help">Help page</Link>

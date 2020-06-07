@@ -3,6 +3,7 @@ const app = require('../app');
 const Contact = require('../models/contact');
 const { userOne, userTwo, contactOneId, setupDatabase } = require('./fixtures/db');
 
+
 beforeEach(setupDatabase);
 
 test('Should add new contact', async () => {
@@ -12,13 +13,13 @@ test('Should add new contact', async () => {
         .send({
             firstName: 'Pasha',
             lastName: 'Zorin',
-            phoneNumber: '+79023097299'
+            email: 'zorin.pavel@gmail.com',
         })
         .expect(201);
 
-    const task = await Contact.findById(response.body._id);
+    const contact = await Contact.findById(response.body._id);
 
-    expect(task).not.toBeNull();
+    expect(contact).not.toBeNull();
 });
 
 test('Should fetch user contacts', async () => {

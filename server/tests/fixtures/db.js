@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const Contact = require('../../models/contact');
+const defaultContacts = require('./contacts');
 
 const userOneId = new mongoose.Types.ObjectId();
 const userOne = {
@@ -21,15 +22,6 @@ const userTwo = {
     token: jwt.sign({ _id: userTwoId }, process.env.JWT_SECRET)
 };
 
-const contactOneId = new mongoose.Types.ObjectId();
-const contactOne = {
-    _id: contactOneId,
-    firstName: 'Forest',
-    lastName: 'Gump',
-    phoneNumber: '+79023097288',
-    owner: userOne._id
-};
-
 const setupDatabase = async () => {
     await User.deleteMany();
     await Contact.deleteMany();
@@ -37,7 +29,10 @@ const setupDatabase = async () => {
     await new User(userOne).save();
     await new User(userTwo).save();
 
-    await new Contact(contactOne).save();
+    defaultContacts.forEach(contact => {
+        contact.owner = userOne;
+        const newContact = new Contact(contact).save();
+    });
 };
 
 module.exports = {
@@ -45,7 +40,5 @@ module.exports = {
     userOne,
     userTwoId,
     userTwo,
-    contactOneId,
-    contactOne,
     setupDatabase
 };

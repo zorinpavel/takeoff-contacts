@@ -3,6 +3,8 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Contact = require('./contact');
+const getDefaultContacts = require('../utils/contacts');
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -88,6 +90,23 @@ userSchema.pre('save', async function(next) {
 
     if (user.isModified('password'))
         user.password = await bcrypt.hash(user.password, 8);
+
+    if (this.isNew) {
+        await getDefaultContacts()
+            .then(body => JSON.parse(body))
+            .then(contacts => {
+                contacts.forEach(async (contact) => {
+                    const contactObj = new Contact(contact);
+
+                    contactObj.owner = user;
+                    await contactObj.save();
+                });
+            })
+            .catch(e => {
+                console.error(e);
+                throw new Error(e);
+            });
+    }
 
     next();
 });

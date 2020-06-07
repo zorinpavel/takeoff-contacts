@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { fetchContacts, setContacts } from '../../actions/contacts';
 import contacts from '../fixtures/contacts';
 
-const uid = 'myTestUid';
-const defaultAuthState = { auth: { uid } };
+const authToken = 'myTest_authToken';
+const defaultAuthState = { auth: { authToken } };
 const createMockStore = configureMockStore([thunk]);
 
 
@@ -21,15 +21,16 @@ test('Should setup contacts', () => {
 test('Should set contacts from database', (done) => {
     const store = createMockStore(defaultAuthState);
 
-    store.dispatch(fetchContacts()).then(() => {
-        const actions = store.getActions();
+    store.dispatch(fetchContacts())
+        .then(() => {
+            const actions = store.getActions();
 
-        expect(actions[0]).toEqual({
-            type: 'SET_CONTACTS',
-            contacts
+            expect(actions[0]).toEqual({
+                type: 'SET_CONTACTS',
+                contacts
+            });
+
+            done();
         });
-
-        done();
-    });
 });
 

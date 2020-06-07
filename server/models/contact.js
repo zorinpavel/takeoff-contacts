@@ -1,26 +1,28 @@
 const mongoose = require('mongoose');
-const phone = require('phone');
 
 const contactSchema = new mongoose.Schema({
-    firstName: {
+    name: {
         type: String,
         trim: true,
         required: true
     },
-    lastName: {
-        type: String,
-        trim: true
-    },
-    phoneNumber: {
+    email: {
         type: String,
         trim: true,
         required: true,
-        validate(value) {
-            const phoneNumber = phone(value);
-
-            if (!phoneNumber[0])
-                throw new Error('Phone number is not valid');
-        }
+    },
+    phone: {
+        type: String,
+        trim: true,
+        required: false,
+    },
+    position: {
+        type: String,
+        trim: true,
+    },
+    photo: {
+        type: String,
+        trim: true,
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
