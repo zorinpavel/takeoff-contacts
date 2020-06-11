@@ -93,14 +93,13 @@ DIV[role="dialog"] {
     flex-direction: column;
     height: 100%;
 }
-.content-body {
-    flex: 1;
-    padding: 1.5rem 0;
-}
 .content-container {
     margin: 0 auto;
     padding: 0 2rem;
     width: 95%;
     max-width: 95%;
 }
-
+.content-body {
+    flex: 1;
+    padding: 2rem;
+}

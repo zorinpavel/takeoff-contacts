@@ -1,6 +1,7 @@
 %input {
     border-radius: 2px;
-    font-family: inherit;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     font-size: inherit;
     color: $color-input;
     margin: 0.5rem 0;
@@ -17,7 +18,7 @@
     -moz-appearance: none;
     appearance: none;
     box-shadow: none !important;
-    &:focus {
+    &:focus, &:hover {
         color: $color-input-focus;
         border: 1px solid $color-input-focus;
     }
@@ -67,6 +68,8 @@ INPUT[type="number"] {
 
 .text-field {
     position: relative;
+    margin-bottom: 2rem;
+
     INPUT, TEXTAREA {
         & + LABEL {
             @extend %label;
@@ -74,7 +77,7 @@ INPUT[type="number"] {
         &:required {
             border-left-color: $color-input-required-border;
         }
-        &:focus {
+        &:focus, &:hover {
             & + LABEL {
                 color: $color-input-focus;
             }
@@ -171,11 +174,6 @@ INPUT[type="number"] {
         height: 1.5rem;
         cursor: pointer;
         z-index: 2;
-    }
-    @include media(phone) {
-        &.c1of4 {
-            width: 49.3%; // why???
-        }
     }
 }
 
@@ -300,8 +298,6 @@ INPUT[type="number"] {
 %button {
     @extend %input;
 
-    border-radius: 2px;
-    font-family: "RobotoRegular", sans-serif;
     cursor: pointer;
     border: 0 none;
     width: auto;
@@ -309,7 +305,7 @@ INPUT[type="number"] {
     overflow: hidden;
     text-decoration: none;
     text-align: center;
-    font-size: 90%;
+    font-size: 80%;
     letter-spacing: 1.5px;
     line-height: 1;
     padding: 1em 1.5em 0.7em;
@@ -348,7 +344,8 @@ INPUT[type="button"], A[role="button"], BUTTON {
     @include button-type($color-button, $color-button-background);
 }
 INPUT[type="button"][role="delete"], BUTTON[role="delete"], A[role="button delete"],
-INPUT[type="button"].button-delete, BUTTON.button-delete, A[role="button"].button-delete {
+INPUT[type="button"].button-delete, BUTTON.button-delete, A[role="button"].button-delete,
+INPUT[type="button"].button-red, BUTTON.button-red, A[role="button"].button-red {
     @extend  %button;
     @include button-type($color-button-red, $color-button-background-red);
 }
@@ -372,4 +369,11 @@ INPUT[type="button"].button-flat, BUTTON.button-flat, A[role="button"].button-fl
 
 BUTTON.google {
     @include button-type($color-button-red, $color-social-google);
+}
+
+.button-section {
+    text-align: center;
+    border-top: 1px solid $color-input-border;
+    margin-top: 3rem;
+    padding-top: 2rem;
 }

@@ -1,0 +1,15 @@
+.contact-edit {
+    @include flex-grid(row, flex-start, stretch, wrap);
+
+    .user-profile {
+        flex: 0 0 25%;
+        margin-right: 2rem;
+    }
+
+    .contact-edit__form-wrapper {
+        flex-grow: 1;
+        background: rgb(255, 255, 255);
+        padding: 2rem 1rem;
+        border: 1px solid $color-border;
+    }
+}

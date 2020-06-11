@@ -6,15 +6,15 @@ import { fetchContacts } from '../actions/contacts';
 
 
 export const ContactList = (props) => {
-    useEffect(() => {
-        props.fetchContacts()
-            .then(contacts => {
-                console.log('contacts', contacts);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     props.fetchContacts()
+    //         .then(contacts => {
+    //             // console.log('contacts', contacts);
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         });
+    // }, []);
 
     return (
         <div className="list-body">
@@ -25,7 +25,11 @@ export const ContactList = (props) => {
                     </div>
                 ) : (
                     props.contacts.map(contact => {
-                        return <ContactListItem key={contact._id} { ...contact } />;
+                        return <ContactListItem
+                            key={contact._id}
+                            contact={contact}
+                            className={'list-item'}
+                        />;
                     })
                 )
             }
@@ -33,11 +37,9 @@ export const ContactList = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        contacts: selectContacts(state.contacts, state.filters)
-    };
-};
+const mapStateToProps = (state) => ({
+    contacts: selectContacts(state.contacts, state.filters)
+});
 
 const mapDispatchToProps = (dispatch) => ({
     fetchContacts: (params) => dispatch(fetchContacts(params)),

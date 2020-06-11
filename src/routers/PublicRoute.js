@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 
 export const PublicRoute = ({
@@ -12,7 +13,12 @@ export const PublicRoute = ({
         isAuthenticated ? (
             <Redirect to="/dashboard" />
         ) : (
-            <Component {...props} />
+            <Fragment>
+                <div className="content-container content-body">
+                    <Component {...props} />
+                </div>
+                <Footer />
+            </Fragment>
         )
     )}/>
 );

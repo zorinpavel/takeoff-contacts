@@ -3,9 +3,7 @@ import ContactList from './ContactList';
 
 
 const DashboardPage = () => (
-    <div className="content-container content-body">
-        <ContactList />
-    </div>
+    <ContactList />
 );
 
 export default DashboardPage;

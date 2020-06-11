@@ -5,6 +5,7 @@ import { firebase } from './firebase';
 import configStore from './configStore';
 import AppRouter, { history } from './routers/AppRouter';
 import { logout, fetchToken } from './actions/auth';
+import { fetchContacts } from './actions/contacts';
 import LoadingPage from './components/LoadingPage';
 
 import 'normalize.css/normalize.css';
@@ -32,7 +33,9 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(fetchToken(user))
-            .then(() => {
+            .then(async () => {
+                await store.dispatch(fetchContacts());
+
                 renderApp();
                 if (history.location.pathname === '/')
                     history.push('/dashboard');

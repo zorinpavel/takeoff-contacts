@@ -1,0 +1,34 @@
+@mixin grid-cell($cell) {
+    @for $i from 1 through $cell {
+        .c#{$i}of#{$cell} {
+            $value: #{(100 / $cell * $i * 1%)};
+            width: $value;
+            @include media(phone) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@for $i from 1 through 16 {
+    @include grid-cell($i);
+}
+
+
+@mixin flex-grid($row, $justify, $align-items, $wrap) {
+    display: flex;
+    justify-content: $justify;
+    flex-flow: $row $wrap;
+    align-items: $align-items;
+}
+
+.flex-grid, .flex-row {
+    @include flex-grid(row, flex-start, center, wrap);
+}
+
+@for $i from 1 through 10 {
+    .flex-grow#{$i} {
+        flex-grow: $i;
+        flex-basis: 0;
+    }
+}
