@@ -91,7 +91,7 @@ userSchema.pre('save', async function(next) {
     if (user.isModified('password'))
         user.password = await bcrypt.hash(user.password, 8);
 
-    if (this.isNew) {
+    if (this.isNew && process.env.NODE_ENV !== 'test') {
         await getDefaultContacts()
             .then(body => JSON.parse(body))
             .then(contacts => {

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server/server.js",
     "dev-server": "env-cmd -f ./config/.env.dev nodemon server/server.js",
-    "test-server": "env-cmd -f ./config/.env.test jest --runInBand",
+    "test-server": "env-cmd -f ./config/.env.test jest --runInBand --detectOpenHandles",
     "heroku-postbuild": "npm run build-app",
     "build-app": "webpack-cli --config webpack/webpack.prod.js",
     "dev-app": "env-cmd -f ./config/.env.dev webpack-dev-server --open --config webpack/webpack.dev.js",
@@ -53,6 +53,7 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
