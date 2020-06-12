@@ -5,7 +5,8 @@ const Contact = require('../../models/contact');
 const { defaultContacts } = require('./contacts');
 
 const userOneId = new mongoose.Types.ObjectId();
-const userOne = {
+
+let userOne = {
     _id: userOneId,
     name: 'Mike',
     email: 'mike@mike.com',
@@ -13,14 +14,19 @@ const userOne = {
     authToken: jwt.sign({ _id: userOneId }, process.env.JWT_SECRET)
 };
 
+userOne.token = jwt.sign({ email: userOne.email.toString() }, process.env.JWT_SECRET);
+
 const userTwoId = new mongoose.Types.ObjectId();
-const userTwo = {
+
+let userTwo = {
     _id: userTwoId,
     name: 'Mike 2',
     email: 'mike2@mike.com',
     password: 'mikePass777',
-    authToken: jwt.sign({ _id: userTwoId }, process.env.JWT_SECRET)
+    authToken: jwt.sign({ _id: userTwoId }, process.env.JWT_SECRET),
 };
+
+userTwo.token = jwt.sign({ email: userTwo.email.toString() }, process.env.JWT_SECRET);
 
 const setupDatabase = async () => {
     await User.deleteMany();
