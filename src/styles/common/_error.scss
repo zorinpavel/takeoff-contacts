@@ -1,0 +1,37 @@
+%ulbox {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    padding: 1em 2em;
+    margin: 1em auto;
+    border-radius: $border-radius;
+    width: 80%;
+    @include media(phone) {
+        width: 100%;
+    }
+}
+
+UL[role="error"] {
+    @extend %ulbox;
+    color: $color-text-error;
+    background-color: rgb(242, 222, 222);
+    border: 1px solid rgb(220, 167, 167);
+}
+UL[role="attention"] {
+    @extend %ulbox;
+    color: $color-text-attention;
+    background-color: rgb(252, 248, 227);
+    border: 1px solid rgb(245, 231, 158);
+}
+UL[role="message"] {
+    @extend %ulbox;
+    color: $color-text-message;
+    background-color: rgb(223, 240, 216);
+    border: 1px solid rgb(178, 219, 161);
+}
+UL[role="info"] {
+    @extend %ulbox;
+    color: $color-text-info;
+    background-color: rgb(217, 237, 247);
+    border-color: rgb(188, 223, 241);
+}

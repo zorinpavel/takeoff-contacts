@@ -21,17 +21,34 @@ export default class ContactForm extends React.Component {
         this.setState(() => ({ [`${name}`]: value }));
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        if (!this.state.name || !this.state.email) {
+            this.setState(() => ({ error: 'Please provide name and email' }));
+        } else {
+            this.setState(() => ({ error: undefined }));
+            this.props.onSubmit({
+                name: this.state.name,
+                email: this.state.email,
+                phone: this.state.phone,
+                position: this.state.position,
+            });
+        }
+    }
 
     render() {
         return (
             <form className="form" onSubmit={this.onSubmit}>
-                {this.state.error && <p className="form__error">{this.state.error}</p>}
+                {this.state.error && <ul role="error"><li>{this.state.error}</li></ul>}
                 <div className="text-field c1of2">
                     <input type="text"
                         id="name"
                         placeholder="Enter name"
                         value={this.state.name}
-                        onChange={this.onChange} />
+                        onChange={this.onChange}
+                        icon="name"
+                    />
                     <label htmlFor="name">Name</label>
                 </div>
                 <div className="text-field c1of2">
@@ -39,15 +56,19 @@ export default class ContactForm extends React.Component {
                         id="email"
                         placeholder="Enter email"
                         value={this.state.email}
-                        onChange={this.onChange} />
+                        onChange={this.onChange}
+                        icon="email"
+                    />
                     <label htmlFor="email">Email</label>
                 </div>
                 <div className="text-field c1of2">
                     <input type="phone"
                         id="phone"
-                        placeholder="Enter email"
+                        placeholder="Enter phone"
                         value={this.state.phone}
-                        onChange={this.onChange} />
+                        onChange={this.onChange}
+                        icon="phone"
+                    />
                     <label htmlFor="phone">Phone</label>
                 </div>
                 <div className="text-field c1of2">

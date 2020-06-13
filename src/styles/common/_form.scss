@@ -117,6 +117,7 @@ INPUT[type="number"] {
         @extend .text-field[icon]:after;
         content: "\f023";
     }
+    &[icon="name"]:after,
     &[icon="login"]:after {
         @extend .text-field[icon]:after;
         content: "\f2be";

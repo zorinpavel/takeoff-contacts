@@ -1,6 +1,7 @@
 import fetch from '../helpers/fetch';
 import settings from '../settings';
 
+
 export const setContacts = (contacts) => ({
     type: 'SET_CONTACTS',
     contacts
@@ -20,6 +21,38 @@ export const fetchContacts = (params = {}) => (dispatch, getState) => {
             dispatch(setContacts(contacts));
 
             return Promise.resolve(contacts);
+        })
+        .catch(response => {
+
+            if (process.env.NODE_ENV === 'development')
+                console.error('fetch error', response);
+
+            return Promise.reject(response);
+        });
+
+};
+
+
+export const editContact = (id, updates) => ({
+    type: 'EDIT_CONTACT',
+    id,
+    updates
+});
+
+export const fetchEditContact = (id, updates) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+
+    return fetch({
+        url: settings.API_URL + settings.CONTACTS_PATH + '/' + id,
+        method: 'PATCH',
+        params: updates,
+        authToken
+    })
+        .then(response => response.json())
+        .then(contact => {
+            dispatch(editContact(id, contact));
+
+            return Promise.resolve(contact);
         })
         .catch(response => {
 

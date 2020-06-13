@@ -11,7 +11,7 @@ export default (state = [], action) => {
         return state.filter(id => id !== action.id);
     case 'EDIT_CONTACT':
         return state.map(contact => {
-            if (contact.id === action.id) {
+            if (contact._id === action.id) {
                 return {
                     ...contact,
                     ...action.updates

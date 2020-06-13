@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
 import ContactListItem from './ContactListItem';
-// import { startRemoveExpense, startEditExpense } from '../actions/expenses';
+import { fetchRemoveContact, fetchEditContact } from '../actions/contacts';
 
 
 export class EditContactPage extends React.Component {
     onSubmit = (contact) => {
-        // this.props.startEditExpense(this.props.expense.id, contact);
+        this.props.fetchEditContact(this.props.contact._id, contact);
         this.props.history.push('/');
     }
 
@@ -36,8 +36,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startEditExpense: (id, contact) => dispatch(startEditExpense(id, contact)),
-    startRemoveExpense: (id) => dispatch(startRemoveExpense(id))
+    fetchEditContact: (id, contact) => dispatch(fetchEditContact(id, contact)),
+    fetchRemoveContact: (id) => dispatch(fetchRemoveContact(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditContactPage);
