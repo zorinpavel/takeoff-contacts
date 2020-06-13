@@ -26,9 +26,8 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: false,
+        required: true,
         trim: true,
-        // minlength: 7,
         validate(value) {
             if (!validator.isLength(value, { min: 6 }))
                 throw new Error('Password should be more then 6');
@@ -104,10 +103,10 @@ userSchema.pre('save', async function(next) {
                     name: 'Pavel Zorin',
                     email: 'zorin.pavel@gmail.com',
                     position: 'Software engineer',
-                    photo: '/img/my.jpg'
+                    photo: '/img/my.jpg',
+                    owner: user
                 };
 
-                myContact.owner = user;
                 await new Contact(myContact).save();
             })
             .catch(e => {

@@ -8,49 +8,45 @@
 
 <h1>Takeoff API</h1>
 
-<ul>
-    <li><h3>Register new API user</h3></li>
-    <ol>
+<h3>Register new API user</h3>
+    <ul>
         <li><b>Create new user</b><br>POST /users<br>
             {
             "name": "API user",
             "email": "apiuser@apiuser.com",
             "password": "apiUserPassword"
-            }<br>
-            Then authenticate with Bearer token
-        </li>
-        <li><b>Login</b><br>POST /users/login<br>
-            {
-            "email": "apiuser@apiuser.com",
-            "password": "apiUserPassword"
             }
+            <br>
+            <br>
+            Then authenticate with Bearer <i>authToken</i>
         </li>
         <li><b>Update user</b><br>PATCH /users/me<br>
             {
-            "password": "newUserPassword"
+            "name": "User Name"
             }
         </li>
         <li><b>Delete user</b><br>DELETE /users/me</li>
-    </ol>
-    <li><h3>Use API</h3></li>
-    <ol>
+    </ul>
+
+<h3>Use API</h3>
+    <ul>
         <li><b>Create contact</b><br>POST /contacts<br>
             {
-            "firstName": "John",
-            "lastName": "Doe",
-            "phoneNumber": "+7 904 892 3499",
+            "name": "John Doe",
+            "email": "doe.john@gmail.com",
+            "phone": "+7 904 892 3499",
+            "position": "Manager",
             }
         </li>
-        <li>GET /contacts</li>
-        <li>PATCH /contacts/&lt;_id&gt;<br>
+        <li><b>Get contacts list</b><br>GET /contacts</li>
+        <li><b>Update contact</b><br>PATCH /contacts/&lt;_id&gt;<br>
             {
-            "phoneNumber": "+7 904 892 3494",
+            "phone": "+7 904 892 3494",
             }
         </li>
-        <li>GET /contacts/&lt;_id&gt;</li>
-        <li>DELETE /contacts/&lt;_id&gt;</li>
-    </ol>
-</ul>
+        <li><b>Get contact by id</b><br>GET /contacts/&lt;_id&gt;</li>
+        <li><b>Delete contact by id</b><br>DELETE /contacts/&lt;_id&gt;</li>
+    </ul>
 
 </body>
 </html>

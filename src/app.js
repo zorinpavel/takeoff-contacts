@@ -23,9 +23,9 @@ const jsx = (
 );
 
 let hasRendered = false;
-const renderApp = (error) => {
+const renderApp = (error = '') => {
     if (error)
-        history.push('/dashboard');
+        history.push('/help');
 
     if (!hasRendered) {
         ReactDOM.render(jsx, document.getElementById('app'));
