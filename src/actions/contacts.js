@@ -63,3 +63,34 @@ export const fetchEditContact = (id, updates) => (dispatch, getState) => {
         });
 
 };
+
+
+export const addContact = (contact) => ({
+    type: 'ADD_CONTACT',
+    contact
+});
+
+export const fetchAddContact = (contact) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+
+    return fetch({
+        url: settings.API_URL + settings.CONTACTS_PATH,
+        method: 'POST',
+        params: contact,
+        authToken
+    })
+        .then(response => response.json())
+        .then(contact => {
+            dispatch(addContact(contact));
+
+            return Promise.resolve(contact);
+        })
+        .catch(response => {
+
+            if (process.env.NODE_ENV === 'development')
+                console.error('fetch error', response);
+
+            return Promise.reject(response);
+        });
+
+};

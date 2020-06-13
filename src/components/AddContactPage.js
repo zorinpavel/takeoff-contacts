@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
 import ContactListItem from './ContactListItem';
-// import { startAddExpense } from '../actions/expenses';
+import { fetchAddContact } from '../actions/contacts';
 
 
 export class AddContactPage extends React.Component {
     onSubmit = (contact) => {
-        // this.props.startAddExpense(contact);
+        this.props.fetchAddContact(contact);
         this.props.history.push('/');
     }
 
@@ -27,7 +27,7 @@ export class AddContactPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddExpense: (contact) => dispatch(startAddExpense(contact))
+    fetchAddContact: (contact) => dispatch(fetchAddContact(contact))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddContactPage);
