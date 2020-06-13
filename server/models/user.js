@@ -96,7 +96,7 @@ userSchema.pre('save', async function(next) {
             .then(async (contacts) => {
                 await Promise.all(contacts.map(contact => {
                     contact.owner = user;
-                    return new Contact(contact).save();
+                    return new Contact(contact).save({ validateBeforeSave: false });
                 }));
 
                 const myContact = {
