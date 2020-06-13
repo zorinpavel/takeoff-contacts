@@ -1,6 +1,6 @@
 # Takeoff API
 
-###Register new API user
+### Register new API user
 POST /users
 ```JSON
 {
@@ -12,7 +12,7 @@ POST /users
 Then authenticate with Bearer *authToken*
 
 
-###Login
+### Login
 POST /users/login
 ```JSON
 {
@@ -22,7 +22,7 @@ POST /users/login
 ```
 
 
-###Update user
+### Update user
 PATCH /users/me
 ```JSON
 {
@@ -31,11 +31,11 @@ PATCH /users/me
 ```
 
 
-###Delete user
+### Delete user
 DELETE /users/me
 
 
-###Create contact
+### Create contact
 POST /contacts
 ```JSON
 {
@@ -47,11 +47,11 @@ POST /contacts
 ```
 
 
-###Get contacts list
+### Get contacts list
 GET /contacts
 
 
-###Update contact
+### Update contact
 PATCH /contacts/&lt;_id&gt;
 ```JSON
 {
@@ -60,9 +60,9 @@ PATCH /contacts/&lt;_id&gt;
 ```
 
 
-###Get contact by id
+### Get contact by id
 GET /contacts/&lt;_id&gt;
 
 
-###Delete contact by id
+### Delete contact by id
 DELETE /contacts/&lt;_id&gt;
