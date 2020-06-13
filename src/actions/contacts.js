@@ -94,3 +94,59 @@ export const fetchAddContact = (contact) => (dispatch, getState) => {
         });
 
 };
+
+export const fetchRandomContact = (params) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+
+    return fetch({
+        url: settings.API_URL + settings.CONTACTS_PATH + '/random',
+        method: 'POST',
+        params,
+        authToken
+    })
+        .then(response => response.json())
+        .then(contact => {
+            dispatch(addContact(contact));
+
+            return Promise.resolve(contact);
+        })
+        .catch(response => {
+
+            if (process.env.NODE_ENV === 'development')
+                console.error('fetch error', response);
+
+            return Promise.reject(response);
+        });
+
+};
+
+
+export const removeContact = (id) => ({
+    type: 'REMOVE_CONTACT',
+    id
+});
+
+export const fetchRemoveContact = (id) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+
+    return fetch({
+        url: settings.API_URL + settings.CONTACTS_PATH + '/' + id,
+        method: 'DELETE',
+        authToken
+    })
+        .then(response => response.json())
+        .then(contact => {
+            dispatch(removeContact(contact._id));
+
+            return Promise.resolve(contact);
+        })
+        .catch(response => {
+
+            if (process.env.NODE_ENV === 'development')
+                console.error('fetch error', response);
+
+            return Promise.reject(response);
+        });
+
+};
+

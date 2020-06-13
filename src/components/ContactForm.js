@@ -21,6 +21,12 @@ export default class ContactForm extends React.Component {
         this.setState(() => ({ [`${name}`]: value }));
     }
 
+    onRemove = (e) => {
+        e.preventDefault();
+
+        this.props.onRemove();
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 

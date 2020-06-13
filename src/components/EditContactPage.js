@@ -12,7 +12,7 @@ export class EditContactPage extends React.Component {
     }
 
     onRemove = () => {
-        // this.props.startRemoveExpense(this.props.expense.id);
+        this.props.fetchRemoveContact(this.props.contact._id);
         this.props.history.push('/');
     }
 
@@ -24,6 +24,7 @@ export class EditContactPage extends React.Component {
                     <ContactForm
                         contact={this.props.contact}
                         onSubmit={this.onSubmit}
+                        onRemove={this.onRemove}
                     />
                 </div>
             </div>
