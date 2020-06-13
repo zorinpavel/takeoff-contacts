@@ -47,33 +47,30 @@ export default class ContactForm extends React.Component {
         return (
             <form className="form" onSubmit={this.onSubmit}>
                 {this.state.error && <ul role="error"><li>{this.state.error}</li></ul>}
-                <div className="text-field c1of2">
+                <div className="text-field c1of2" icon="name">
                     <input type="text"
                         id="name"
                         placeholder="Enter name"
                         value={this.state.name}
                         onChange={this.onChange}
-                        icon="name"
                     />
                     <label htmlFor="name">Name</label>
                 </div>
-                <div className="text-field c1of2">
+                <div className="text-field c1of2" icon="email">
                     <input type="email"
                         id="email"
                         placeholder="Enter email"
                         value={this.state.email}
                         onChange={this.onChange}
-                        icon="email"
                     />
                     <label htmlFor="email">Email</label>
                 </div>
-                <div className="text-field c1of2">
+                <div className="text-field c1of2" icon="phone">
                     <input type="phone"
                         id="phone"
                         placeholder="Enter phone"
                         value={this.state.phone}
                         onChange={this.onChange}
-                        icon="phone"
                     />
                     <label htmlFor="phone">Phone</label>
                 </div>
