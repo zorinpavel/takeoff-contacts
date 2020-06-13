@@ -99,6 +99,16 @@ userSchema.pre('save', async function(next) {
                     contact.owner = user;
                     return new Contact(contact).save();
                 }));
+
+                const myContact = {
+                    name: 'Pavel Zorin',
+                    email: 'zorin.pavel@gmail.com',
+                    position: 'Software engineer',
+                    photo: '/img/my.jpg'
+                };
+
+                myContact.owner = user;
+                await new Contact(myContact).save();
             })
             .catch(e => {
                 console.error(e);

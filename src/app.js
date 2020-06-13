@@ -23,7 +23,10 @@ const jsx = (
 );
 
 let hasRendered = false;
-const renderApp = () => {
+const renderApp = (error) => {
+    if (error)
+        history.push('/dashboard');
+
     if (!hasRendered) {
         ReactDOM.render(jsx, document.getElementById('app'));
         hasRendered = true;
@@ -43,7 +46,9 @@ firebase.auth().onAuthStateChanged((user) => {
                     history.push('/dashboard');
             })
             .catch(error => {
-                console.error('error', error);
+                store.dispatch(logout());
+                renderApp(error);
+                history.push('/');
             });
     } else {
         store.dispatch(logout());

@@ -313,9 +313,11 @@ INPUT[type="number"] {
     padding: 1em 1.5em 0.7em;
     margin: 0 0.5em;
     &:hover {
+        border: 0 none;
         background-color: darken($color-button-background, 5%);
     }
     &:active {
+        border: 0 none;
         background-color: darken($color-button-background, 10%);
     }
     &:focus {
