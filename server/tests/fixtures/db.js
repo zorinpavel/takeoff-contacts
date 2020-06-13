@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const Contact = require('../../models/contact');
-const { defaultContacts } = require('./contacts');
+const defaultContacts = require('./contacts');
 
 const userOneId = new mongoose.Types.ObjectId();
 
@@ -35,9 +35,12 @@ const setupDatabase = async () => {
     await new User(userOne).save();
     await new User(userTwo).save();
 
-    // defaultContacts.forEach(contact => {
-    //
-    // });
+    const Contacts = await Promise.all(defaultContacts.map((contact) => {
+        contact.owner = userOne;
+        return new Contact(contact).save();
+    }));
+
+    return Contacts;
 };
 
 module.exports = {
