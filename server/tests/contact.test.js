@@ -22,6 +22,20 @@ test('Should add new contact', async () => {
     expect(contact).not.toBeNull();
 });
 
+test('Should edit contact', async () => {
+    const response = await request(app)
+        .patch('/contacts/' + defaultContacts[0]._id)
+        .set('Authorization', 'Bearer ' + userOne.authToken)
+        .send({
+            name: 'Pasha',
+        })
+        .expect(200);
+
+    const contact = await Contact.findById(response.body._id);
+
+    expect(contact.name).toBe('Pasha');
+});
+
 test('Should fetch user contacts', async () => {
     const response = await request(app)
         .get('/contacts')
