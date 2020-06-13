@@ -1,8 +1,8 @@
 const request = require('request');
 
-const getDefaultContacts = () => {
+const getDefaultContacts = (props) => {
     const options = {
-        url: 'https://uifaces.co/api?limit=10',
+        url: 'https://uifaces.co/api?' + (props.limit ? 'limit=' + props.limit : ''),
         headers: {
             'Cache-Control': 'no-cache',
             'Accept': 'application/json',

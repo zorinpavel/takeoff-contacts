@@ -94,13 +94,11 @@ userSchema.pre('save', async function(next) {
     if (this.isNew && process.env.NODE_ENV !== 'test') {
         await getDefaultContacts()
             .then(body => JSON.parse(body))
-            .then(contacts => {
-                contacts.forEach(async (contact) => {
-                    const contactObj = new Contact(contact);
-
-                    contactObj.owner = user;
-                    await contactObj.save();
-                });
+            .then(async (contacts) => {
+                await Promise.all(contacts.map(contact => {
+                    contact.owner = user;
+                    return new Contact(contact).save();
+                }));
             })
             .catch(e => {
                 console.error(e);

@@ -1,6 +1,7 @@
 const express = require('express');
 const Contact = require('../models/contact');
 const auth = require('../middleware/auth');
+const getDefaultContacts = require('../utils/contacts');
 
 
 const router = new express.Router();
@@ -18,6 +19,27 @@ router.post('/contacts', auth, async (req, res) => {
     try {
         await contact.save();
         res.status(201).send(contact);
+    } catch (e) {
+        res.status(400).send(e);
+    }
+});
+
+router.post('/contacts/random', auth, async (req, res) => {
+    try {
+        await getDefaultContacts({ limit: 1 })
+            .then(body => JSON.parse(body))
+            .then(async (contacts) => {
+                const contactsObjects = await Promise.all(contacts.map(contact => {
+                    contact.owner = req.user;
+                    return new Contact(contact).save();
+                }));
+
+                res.status(201).send(contactsObjects);
+            })
+            .catch(e => {
+                console.error(e);
+                throw new Error(e);
+            });
     } catch (e) {
         res.status(400).send(e);
     }

@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
         if (!user)
             throw new Error('Can\'t find user');
 
-        req.token = authToken;
+        req.authToken = authToken;
         req.user = user;
 
         next();

@@ -105,10 +105,10 @@ export const fetchRandomContact = (params) => (dispatch, getState) => {
         authToken
     })
         .then(response => response.json())
-        .then(contact => {
-            dispatch(addContact(contact));
+        .then(contacts => {
+            dispatch(addContact(contacts[0]));
 
-            return Promise.resolve(contact);
+            return Promise.resolve(contacts[0]);
         })
         .catch(response => {
 
