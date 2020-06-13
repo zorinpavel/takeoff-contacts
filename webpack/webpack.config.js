@@ -83,6 +83,7 @@ module.exports = {
             'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
             'process.env.FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
             'process.env.JWT_SECRET': JSON.stringify(process.env.JWT_SECRET),
+            'process.env.API_URL': JSON.stringify(process.env.API_URL),
         }),
     ],
 };
