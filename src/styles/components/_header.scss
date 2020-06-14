@@ -46,6 +46,18 @@
                     height: 2.5em;
                 }
             }
+
+            @include media(phone) {
+                flex-direction: column;
+
+                & > * {
+                    margin: 1rem auto;
+                }
+            }
+        }
+
+        @include media(phone) {
+            flex-direction: column;
         }
     }
 }

@@ -4,6 +4,10 @@
 
     .list-item {
         flex: 0 0 23%;
-        margin: 1%;
+        margin: 1rem 1%;
+    }
+
+    @include media(phone) {
+        flex-direction: column;
     }
 }

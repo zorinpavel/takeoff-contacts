@@ -7,4 +7,8 @@
     .page-title__actions {
 
     }
+
+    @include media(phone) {
+        flex-direction: column;
+    }
 }

@@ -98,8 +98,13 @@ DIV[role="dialog"] {
     padding: 0 2rem;
     width: 95%;
     max-width: 95%;
-}
-.content-body {
-    flex: 1;
-    padding: 2rem;
+
+    &.content-body {
+        flex: 1;
+        padding: 2rem;
+    }
+
+    @include media(phone) {
+        padding: 0 1rem !important;
+    }
 }
