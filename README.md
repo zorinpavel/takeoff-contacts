@@ -1,4 +1,16 @@
-# Takeoff API
+# What is it?
+
+It's playground web app to show my skills
+
+### What's inside?
+- Node.js + Express
+- MongoDB
+- Firebase authorization with google provider
+- Third party API integration  to get random contacts list
+- React.js + Redux
+
+
+# Takeoff contacts API
 
 ### Register new API user
 POST /users
