@@ -41,6 +41,35 @@ export const fetchToken = (user = {}) => {
     };
 };
 
+export const postUser = (user = {}) => {
+    return (dispatch) => {
+        return fetch({
+            url: settings.API_URL + settings.USERS_PATH,
+            method: 'POST',
+            params: {
+                email: user.email,
+                name: user.displayName,
+                password: user.uid
+            },
+        })
+            .then(response => response.json())
+            .then(payload => {
+                const { user, authToken } = payload;
+
+                dispatch(login(user, authToken));
+
+                return Promise.resolve();
+            })
+            .catch(response => {
+
+                if (process.env.NODE_ENV === 'development')
+                    console.error('fetch error', response);
+
+                return Promise.reject(response);
+            });
+    };
+};
+
 export const startLogin = () => {
     return () => firebase.auth().signInWithPopup(googleAuthProvider);
 };

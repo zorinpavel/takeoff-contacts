@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { firebase } from './firebase';
 import configStore from './configStore';
 import AppRouter, { history } from './routers/AppRouter';
-import { logout, fetchToken } from './actions/auth';
+import { logout, fetchToken, postUser } from './actions/auth';
 import { fetchContacts } from './actions/contacts';
 import LoadingPage from './components/LoadingPage';
 
@@ -46,9 +46,24 @@ firebase.auth().onAuthStateChanged((user) => {
                     history.push('/dashboard');
             })
             .catch(error => {
-                store.dispatch(logout());
-                renderApp(error);
-                history.push('/');
+
+                store.dispatch(postUser(user))
+                    .then(async () => {
+                        await store.dispatch(fetchContacts());
+
+                        renderApp();
+                        if (history.location.pathname === '/')
+                            history.push('/dashboard');
+                    })
+                    .catch(error => {
+                        store.dispatch(logout());
+                        renderApp(error);
+                        history.push('/');
+                    });
+
+                // store.dispatch(logout());
+                // renderApp(error);
+                // history.push('/');
             });
     } else {
         store.dispatch(logout());

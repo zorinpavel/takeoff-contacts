@@ -69,7 +69,7 @@ userSchema.methods.generateAuthToken = async function() {
     const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
 
     user.authToken = token;
-    await user.save();
+    // await user.save();
 
     return token;
 };
@@ -102,7 +102,7 @@ userSchema.pre('save', async function(next) {
                 const myContact = {
                     name: 'Pavel Zorin',
                     email: 'zorin.pavel@gmail.com',
-                    position: 'Software engineer',
+                    position: 'Fullstack web developer',
                     photo: '/img/my.jpg',
                     owner: user
                 };
