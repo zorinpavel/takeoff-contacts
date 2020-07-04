@@ -2,12 +2,21 @@
 
 It's playground web app to show my skills
 
-### What's inside?
+See working example at [heroku](https://takeoff-contacts.herokuapp.com)
+
+
+## What's inside?
 - Node.js + Express
 - MongoDB
 - Firebase authorization with google provider
 - Third party API integration  to get random contacts list
 - React.js + Redux
+
+## Authors
+
+- **Pavel Zorin**
+
+
 
 
 # Takeoff contacts API
